@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce PDF Invoices Bulk Download
  * Plugin URI: https://github.com/vijayhardaha/wc-pdf-invoices-bulk-download
  * Description: WooCommerce PDF Invoices Bulk Download plugin allows you to download WooCommerce PDF invoices in bulk as zip files. You can filter and group invoices by date range, months order status and much more.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Vijay Hardaha
  * Author URI: https://twitter.com/vijayhardaha
  * License: GPL-3.0+

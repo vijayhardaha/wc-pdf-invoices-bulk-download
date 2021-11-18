@@ -170,7 +170,7 @@ final class WC_PDF_Invoices_Bulk_Download {
 	private function define_constants() {
 		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH', dirname( WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE ) . '/' );
 		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_BASENAME', plugin_basename( WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE ) );
-		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_VERSION', '1.0.1' );
+		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_VERSION', '1.0.2' );
 		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_MIN_PHP_VERSION', '5.3' );
 		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_BEST_PHP_VERSION', '5.6' );
 		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_MIN_WP_VERSION', '4.0' );
