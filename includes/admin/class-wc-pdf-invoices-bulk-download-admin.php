@@ -29,7 +29,6 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 
 		// Add menus.
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-		add_action( 'admin_head', array( $this, 'hide_all_notices' ) );
 
 		// Enqueue scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
@@ -53,15 +52,6 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 		$path       = trailingslashit( path_join( $upload_dir['basedir'], 'wc-invoice-archives/' ) );
 
 		return wp_mkdir_p( $path );
-	}
-
-	/**
-	 * Hides all admin notice for new admin page
-	 */
-	public function hide_all_notices() {
-		if ( $this->is_valid_screen() ) {
-			remove_all_actions( 'admin_notices' );
-		}
 	}
 
 	/**
@@ -166,13 +156,14 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 		<div class="wrap wc-pdf-invoices-bulk-download-container" id="wc-pdf-invoices-bulk-download-container">
 			<div class="wrapper">
 				<div class="page-title">
-					<h2>
+					<h3>
 						<span class="dashicons dashicons-pdf"></span>
 						<span class="link-shadow"><?php esc_html_e( 'Invoice Bulk Download', 'wc-pdf-invoices-bulk-download' ); ?></span>
-					</h2>
+					</h3>
 				</div>
 
 				<div class="page-content">
+					<h2 class="notice-fix">&nbsp;</h2>
 					<form method="post" action="" class="wc-pdf-invoices-bulk-download-form">
 						<input type="hidden" name="action" value="wc_pdf_invoices_bulk_download_request" />
 						<?php wp_nonce_field( 'wc_pdf_invoices_bulk_download_request', 'nonce' ); ?>

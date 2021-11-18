@@ -172,12 +172,12 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request extends WP_Async_Request {
 	 */
 	public function run( $orders ) {
 		if ( class_exists( 'BEWPI_Invoice' ) ) {
-			$run = $this->wc_pdf_invoices_plugin( $orders );
+			return $this->wc_pdf_invoices_plugin( $orders );
 		} elseif ( function_exists( 'wcpdf_get_document' ) ) {
-			$run = $this->wc_pdf_invoices_packing_slips( $orders );
+			return $this->wc_pdf_invoices_packing_slips( $orders );
 		}
 
-		return $run;
+		return new WP_Error( 'error', esc_html__( 'Invoices for WooCommerce or WooCommerce PDF Invoices & Packing Slips plugin is required to generate the invoices.', 'wc-pdf-invoices-bulk-download' ) );
 	}
 
 	/**

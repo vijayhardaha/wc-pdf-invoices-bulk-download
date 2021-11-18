@@ -2096,6 +2096,12 @@ body .ui-tooltip {
     padding: 0;
 }
 
+.wc-pdf-invoices-bulk-download-container .notice-fix {
+    height: 1px;
+    margin: 0;
+    line-height: 1px;
+}
+
 .wc-pdf-invoices-bulk-download-container .page-title {
     box-sizing: border-box;
     position: fixed;
@@ -2109,7 +2115,7 @@ body .ui-tooltip {
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
-.wc-pdf-invoices-bulk-download-container .page-title h2 {
+.wc-pdf-invoices-bulk-download-container .page-title h3 {
     display: flex;
     align-items: center;
     margin: 0;
@@ -2119,7 +2125,7 @@ body .ui-tooltip {
     font-weight: 700;
 }
 
-.wc-pdf-invoices-bulk-download-container .page-title h2 .dashicons {
+.wc-pdf-invoices-bulk-download-container .page-title h3 .dashicons {
     padding: 5px;
     border: 3px solid #444;
 }

@@ -60,6 +60,12 @@ $progress-active-color: darken($progress-bullet-color, 20%);
     padding: 0;
   }
 
+  .notice-fix {
+    height: 1px;
+    margin: 0;
+    line-height: 1px;
+  }
+
   .page-title {
     box-sizing: border-box;
     position: fixed;
@@ -72,7 +78,7 @@ $progress-active-color: darken($progress-bullet-color, 20%);
     background: $white;
     box-shadow: 0 8px 8px 0 rgba($black, 0.1);
 
-    h2 {
+    h3 {
       display: flex;
       align-items: center;
       margin: 0;

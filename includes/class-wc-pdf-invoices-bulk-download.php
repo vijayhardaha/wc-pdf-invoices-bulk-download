@@ -81,6 +81,7 @@ final class WC_PDF_Invoices_Bulk_Download {
 		register_shutdown_function( array( $this, 'log_errors' ) );
 
 		add_action( 'admin_notices', array( $this, 'build_dependencies_notice' ) );
+		add_action( 'admin_notices', array( $this, 'build_plugins_dependencies_notice' ) );
 
 		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ), -1 );
 		add_action( 'init', array( $this, 'init' ), 0 );
@@ -125,6 +126,24 @@ final class WC_PDF_Invoices_Bulk_Download {
 		}
 
 		echo '<div class="error"><p>' . $msg . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	/**
+	 * Output a admin notice when build dependencies not met.
+	 *
+	 * @return void
+	 * @since 1.0.2
+	 */
+	public function build_plugins_dependencies_notice() {
+		if ( ! ( function_exists( 'wcpdf_get_document' ) || class_exists( 'BEWPI_Invoice' ) ) ) {
+			$msg = sprintf(
+				/* translators: 1: Plugin name 2: Plugin name */
+				__( 'WooCommerce PDF Invoices Bulk Download requires %1$s or %2$s plugin to be installed and active.', 'wc-pdf-invoices-bulk-download' ),
+				'<a href="https://wordpress.org/plugins/woocommerce-pdf-invoices/" target="_blank">Invoices for WooCommerce</a>',
+				'<a href="https://wordpress.org/plugins/woocommerce-pdf-invoices-packing-slips/" target="_blank">WooCommerce PDF Invoices & Packing Slips</a>'
+			);
+			echo '<div class="error"><p>' . $msg . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
 	}
 
 	/**
