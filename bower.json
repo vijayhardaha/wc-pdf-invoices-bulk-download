@@ -1,12 +1,12 @@
 {
-  "name": "wordpress-plugin-boilerplate-gulp",
-  "description": "A Wordpress starter pack with pre-configured Gulp to setup custom Wordpress Plugin Boilerplate in a minute.",
+  "name": "wc-pdf-invoices-bulk-download",
+  "description": "WooCommerce PDF Invoices Bulk Download plugin allows you to download WooCommerce PDF invoices in bulk as zip files. You can filter and group invoices by date range, months order status and much more.",
   "main": "gulpfile.js",
   "authors": [
-    "vijayhardaha <vijayhardaha@gmail.com>"
+    "Vijay Hardaha <vijayhardaha@gmail.com>"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/vijayhardaha/wordpress-plugin-boilerplate-gulp",
+  "homepage": "https://github.com/vijayhardaha/wc-pdf-invoices-bulk-download",
   "ignore": [
     "**/.*",
     "node_modules",

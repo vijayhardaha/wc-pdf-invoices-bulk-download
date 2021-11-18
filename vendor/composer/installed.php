@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '6af25959360235f281e6f88c9c504bbfff397aaa',
+        'reference' => 'b8616faa3bc20fbe12105370005a3de2f439c657',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '6af25959360235f281e6f88c9c504bbfff397aaa',
+            'reference' => 'b8616faa3bc20fbe12105370005a3de2f439c657',
             'dev_requirement' => false,
         ),
         'deliciousbrains/wp-background-processing' => array(
