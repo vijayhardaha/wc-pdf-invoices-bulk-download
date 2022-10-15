@@ -1,25 +1,24 @@
 <?php
 /**
- * WooCommerce PDF Invoices Bulk Download Async Request
+ * Handle bulk download async request.
  *
- * @class WC_PDF_Invoices_Bulk_Download_Async_Request
+ * @since 1.0.0
  * @package WC_PDF_Invoices_Bulk_Download
- * @subpackage WC_PDF_Invoices_Bulk_Download/Admin
- * @version 1.0.0
  */
 
-// Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
 /**
  * WC_PDF_Invoices_Bulk_Download_Async_Request class.
  */
 class WC_PDF_Invoices_Bulk_Download_Async_Request extends WP_Async_Request {
+
 	/**
 	 * Prefix
 	 *
 	 * (default value: 'wp')
 	 *
+	 * @since 1.0.0
 	 * @var string
 	 * @access protected
 	 */
@@ -30,6 +29,7 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request extends WP_Async_Request {
 	 *
 	 * (default value: 'async_request')
 	 *
+	 * @since 1.0.0
 	 * @var string
 	 * @access protected
 	 */
@@ -38,6 +38,7 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request extends WP_Async_Request {
 	/**
 	 * Start Date
 	 *
+	 * @since 1.0.0
 	 * @var string
 	 */
 	public $date_after = null;
@@ -45,12 +46,15 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request extends WP_Async_Request {
 	/**
 	 * End date
 	 *
+	 * @since 1.0.0
 	 * @var string
 	 */
 	public $date_before = null;
 
 	/**
-	 * Handle
+	 * Handle request.
+	 *
+	 * @since 1.0.0
 	 */
 	protected function handle() {
 		// phpcs:disable WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.InputNotValidated
@@ -80,8 +84,9 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request extends WP_Async_Request {
 	}
 
 	/**
-	 * Generate zip
+	 * Generate zip.
 	 *
+	 * @since 1.0.0
 	 * @param array $order_statuses Order statuses array.
 	 */
 	public function generate_zip( $order_statuses ) {
@@ -103,8 +108,9 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request extends WP_Async_Request {
 	}
 
 	/**
-	 * Create zup
+	 * Create zip.
 	 *
+	 * @since 1.0.0
 	 * @param array  $files Files array.
 	 * @param string $destination destination path.
 	 * @param array  $args arguments.
@@ -166,8 +172,9 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request extends WP_Async_Request {
 	}
 
 	/**
-	 * Run the process
+	 * Run the process.
 	 *
+	 * @since 1.0.0
 	 * @param array $orders Orders array.
 	 */
 	public function run( $orders ) {
@@ -181,8 +188,9 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request extends WP_Async_Request {
 	}
 
 	/**
-	 * Create invoices zip from orders
+	 * Create invoices zip from orders.
 	 *
+	 * @since 1.0.0
 	 * @param array $orders Orders array.
 	 */
 	public function wc_pdf_invoices_plugin( $orders ) {
@@ -210,8 +218,9 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request extends WP_Async_Request {
 	}
 
 	/**
-	 * Create invoices packing slips zip from orders
+	 * Create invoices packing slips zip from orders.
 	 *
+	 * @since 1.0.0
 	 * @param array $orders Orders array.
 	 */
 	public function wc_pdf_invoices_packing_slips( $orders ) {
@@ -248,8 +257,9 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request extends WP_Async_Request {
 	}
 
 	/**
-	 * Return archive name
+	 * Return archive name.
 	 *
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public function get_archive_name() {

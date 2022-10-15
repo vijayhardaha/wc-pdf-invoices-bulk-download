@@ -1,15 +1,12 @@
 <?php
 /**
- * WooCommerce PDF Invoices Bulk Download Admin
+ * Register and Enqueue admin assets and register sub menu page.
  *
- * @class WC_PDF_Invoices_Bulk_Download_Admin
+ * @since 1.0.0
  * @package WC_PDF_Invoices_Bulk_Download
- * @subpackage WC_PDF_Invoices_Bulk_Download/Admin
- * @version 1.0.0
  */
 
-// Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
 if ( class_exists( 'WC_PDF_Invoices_Bulk_Download_Admin' ) ) {
 	return new WC_PDF_Invoices_Bulk_Download_Admin();
@@ -22,6 +19,8 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 
 	/**
 	 * Constructor.
+	 *
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 		// Create directory.
@@ -37,6 +36,8 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 
 	/**
 	 * Add menu items.
+	 *
+	 * @since 1.0.0
 	 */
 	public function admin_menu() {
 		add_submenu_page( 'woocommerce', __( 'Invoice Bulk Download', 'wc-pdf-invoices-bulk-download' ), __( 'Invoice Bulk Download', 'wc-pdf-invoices-bulk-download' ), 'manage_woocommerce', 'wc-invoice-bulk-download', array( $this, 'admin_menu_page' ) );
@@ -45,7 +46,8 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 	/**
 	 * Recursive directory creation based on full path.
 	 *
-	 * @return boolean
+	 * @since 1.0.0
+	 * @return bool
 	 */
 	public function create_target_dir() {
 		$upload_dir = wp_upload_dir();
@@ -55,9 +57,10 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 	}
 
 	/**
-	 * Valid screen ids for plugin scripts & styles
+	 * Valid screen ids for plugin scripts & styles.
 	 *
-	 * @return  array
+	 * @since 1.0.0
+	 * @return array
 	 */
 	public function is_valid_screen() {
 		$screen    = get_current_screen();
@@ -85,6 +88,8 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 
 	/**
 	 * Enqueue styles.
+	 *
+	 * @since 1.0.0
 	 */
 	public function admin_styles() {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
@@ -100,6 +105,8 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 
 	/**
 	 * Enqueue scripts.
+	 *
+	 * @since 1.0.0
 	 */
 	public function admin_scripts() {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
@@ -127,7 +134,9 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 	}
 
 	/**
-	 * Display admin page
+	 * Display admin page.
+	 *
+	 * @since 1.0.0
 	 */
 	public function admin_menu_page() {
 		$download_filters = array(
@@ -259,8 +268,9 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 	}
 
 	/**
-	 * Returns years array for settings field
+	 * Returns years array for settings field.
 	 *
+	 * @since 1.0.0
 	 * @return array
 	 */
 	private function years_options() {

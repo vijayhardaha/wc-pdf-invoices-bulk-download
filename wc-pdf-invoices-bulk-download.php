@@ -6,16 +6,18 @@
  * Version: 1.0.2
  * Author: Vijay Hardaha
  * Author URI: https://twitter.com/vijayhardaha
- * License: GPL-3.0+
- * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
+ * License: GPLv2+
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: wc-pdf-invoices-bulk-download
  * Domain Path: /languages/
+ * Requires at least: 5.8
+ * Requires PHP: 7.0
+ * Tested up to: 6.0
  *
  * @package WC_PDF_Invoices_Bulk_Download
  */
 
-// Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
 if ( ! defined( 'WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE' ) ) {
 	define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE', __FILE__ );
@@ -29,7 +31,7 @@ if ( ! class_exists( 'WC_PDF_Invoices_Bulk_Download', false ) ) {
 /**
  * Returns the main instance of WC_PDF_Invoices_Bulk_Download.
  *
- * @since  1.0.0
+ * @since 1.0.0
  * @return WC_PDF_Invoices_Bulk_Download
  */
 function wc_pdf_invoices_bulk_download() {
