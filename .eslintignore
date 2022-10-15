@@ -1,0 +1,9 @@
+# Files & Directories related to build & test tools./
+.vscode/
+/node_modules
+/vendor
+
+# Project Files & Directories.
+assets/
+src/js/plugins/
+src/js/**/*.min.js

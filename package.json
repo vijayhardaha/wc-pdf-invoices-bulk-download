@@ -1,45 +1,62 @@
 {
-  "name": "wc-pdf-invoices-bulk-download",
-  "version": "1.0.0",
-  "description": "WooCommerce PDF Invoices Bulk Download plugin allows you to download WooCommerce PDF invoices in bulk as zip files. You can filter and group invoices by date range, months order status and much more.",
-  "main": "gulpfile.js",
-  "scripts": {
-    "clean": "gulp clean",
-    "start": "gulp watch",
-    "build": "gulp build",
-    "makepot": "gulp makepot"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vijayhardaha/wc-pdf-invoices-bulk-download.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vijayhardaha/wc-pdf-invoices-bulk-download/issues"
-  },
-  "homepage": "https://github.com/vijayhardaha/wc-pdf-invoices-bulk-download#readme",
-  "devDependencies": {
-    "asset-builder": "^2.0.0",
-    "autoprefixer": "^10.2.1",
-    "del": "^6.0.0",
-    "gulp": "^4.0.2",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-cssbeautify": "^3.0.0",
-    "gulp-jshint": "^2.1.0",
-    "gulp-plumber": "^1.2.1",
-    "gulp-postcss": "^9.0.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-sass": "^4.1.0",
-    "gulp-terser": "^2.0.1",
-    "jshint": "^2.12.0",
-    "lazypipe": "^1.0.2",
-    "merge-stream": "^2.0.0",
-    "node-sass": "^5.0.0",
-    "postcss": "^8.2.4",
-    "postcss-discard-duplicates": "^4.0.2",
-    "wp-pot": "^1.9.8"
-  }
+	"name": "wc-pdf-invoices-bulk-download",
+	"version": "1.0.0",
+	"description": "WooCommerce PDF Invoices Bulk Download plugin allows you to download WooCommerce PDF invoices in bulk as zip files. You can filter and group invoices by date range, months order status and much more.",
+	"license": "GPLv2+",
+	"author": "Vijay Hardaha <https://twitter.com/vijayhardaha>",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vijayhardaha/wc-pdf-invoices-bulk-download.git"
+	},
+	"bugs": {
+		"url": "https://github.com/vijayhardaha/wc-pdf-invoices-bulk-download/issues"
+	},
+	"homepage": "https://github.com/vijayhardaha/wc-pdf-invoices-bulk-download#readme",
+	"scripts": {
+		"dev": "gulp watch",
+		"prebuild": "pnpm run lint-fix",
+		"prebuild:css": "pnpm run lint-fix:css",
+		"prebuild:js": "pnpm run lint-fix:js",
+		"build": "gulp build",
+		"build:css": "gulp css",
+		"build:js": "gulp js",
+		"lint:css": "stylelint src/scss",
+		"lint:js": "eslint src/js",
+		"lint:php": "composer run-script lint",
+		"lint": "pnpm run lint:css && pnpm run lint:js && pnpm run lint:php",
+		"lint-fix:css": "stylelint src/scss --fix",
+		"lint-fix:js": "eslint src/js --fix",
+		"lint-fix:php": "composer run-script lint-fix",
+		"lint-fix": "pnpm run lint-fix:css && pnpm run lint-fix:js && pnpm run lint-fix:php",
+		"prezip": "rm -rf wc-pdf-invoices-bulk-download.zip",
+		"zip": "zip -r wc-pdf-invoices-bulk-download.zip ./*.php assets includes languages -x '**/.DS_Store'",
+		"makepot": "wp i18n make-pot . --exclude=\"node_modules,vendor\" --slug=wc-pdf-invoices-bulk-download"
+	},
+	"devDependencies": {
+		"@wordpress/browserslist-config": "^5.2.0",
+		"@wordpress/eslint-plugin": "^13.2.0",
+		"@wordpress/prettier-config": "^2.1.0",
+		"@wordpress/stylelint-config": "^21.1.0",
+		"autoprefixer": "^10.4.12",
+		"del": "^7.0.0",
+		"eslint": "^8.24.0",
+		"eslint-plugin-jsdoc": "^39.3.6",
+		"gulp": "^4.0.2",
+		"gulp-clean-css": "^4.3.0",
+		"gulp-clone": "^2.0.1",
+		"gulp-concat": "^2.6.1",
+		"gulp-group-css-media-queries": "^1.2.2",
+		"gulp-plumber": "^1.2.1",
+		"gulp-postcss": "^9.0.1",
+		"gulp-rename": "^2.0.0",
+		"gulp-sass": "^5.1.0",
+		"gulp-terser": "^2.1.0",
+		"merge-stream": "^2.0.0",
+		"postcss": "^8.4.17",
+		"postcss-discard-duplicates": "^5.1.0",
+		"sass": "^1.55.0",
+		"stylelint": "^14.13.0",
+		"stylelint-config-property-sort-order-smacss": "^9.0.0",
+		"stylelint-order": "^5.0.0"
+	}
 }

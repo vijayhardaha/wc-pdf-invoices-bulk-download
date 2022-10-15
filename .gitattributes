@@ -1,24 +1,21 @@
-# used to remove files from deployment using `git archive`
-# git files
-.gitattributes export-ignore
-.gitignore export-ignore
+# Set the default behavior, in case people don't have `core.autocrlf` set.
+* text=auto
 
-# general text files
-LICENSE export-ignore
-README.md export-ignore
+# Declare files that will always have LF line endings on checkout.
+*.php text eol=lf
 
-# src files
-/src export-ignore
-
-# node files
-node_modules export-ignore
-package.json export-ignore
-bower_components export-ignore
-bower.json export-ignore
-gulpfile.js export-ignore
-.browserslistrc export-ignore
-.editorconfig export-ignore
-package-lock.json export-ignore
-composer.lock export-ignore
-composer.json export-ignore
-.DS_Store export-ignore
+# Remove files for archives generated using `git archive`.
+/.*					export-ignore
+/*.md				export-ignore
+bin					export-ignore
+CHANGELOG.md		export-ignore
+composer.*			export-ignore
+gulpfile.*			export-ignore
+package-lock.json	export-ignore
+package.json		export-ignore
+phpcs.*				export-ignore
+phpunit.*			export-ignore
+pnpm-lock.yaml		export-ignore
+README.md			export-ignore
+src					export-ignore
+tests				export-ignore

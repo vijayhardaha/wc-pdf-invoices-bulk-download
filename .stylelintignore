@@ -1,0 +1,6 @@
+# Files & Directories related to build & test tools.
+/node_modules
+/vendor
+
+# Plugin files and folders.
+assets/

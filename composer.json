@@ -1,7 +1,24 @@
 {
-    "require": {
+	"license": "GPLv2+",
+	"require": {
+        "deliciousbrains/wp-background-processing": "^1.0",
         "grandt/binstring": "^1.0",
-        "phpzip/phpzip": "^2.0",
-        "deliciousbrains/wp-background-processing": "^1.0"
-    }
+        "phpzip/phpzip": "^2.0"
+    },
+	"require-dev": {
+		"php": ">=7.0",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"squizlabs/php_codesniffer": "^3.6",
+		"wp-coding-standards/wpcs": "^2.3"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"lint-fix": "vendor/bin/phpcbf --standard=phpcs.xml --runtime-set ignore_errors_on_exit true --runtime-set ignore_warnings_on_exit true",
+		"lint": "vendor/bin/phpcs --standard=phpcs.xml --runtime-set ignore_errors_on_exit true --runtime-set ignore_warnings_on_exit true"
+	}
 }
