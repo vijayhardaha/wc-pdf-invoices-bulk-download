@@ -62,7 +62,7 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 	 * @return bool
 	 */
 	private function memory_exceeded() {
-		$memory_limit   = $this->get_memory_limit() * 0.7; // 70% of max memory
+		$memory_limit   = $this->get_memory_limit() * 0.8; // 80% of max memory
 		$current_memory = memory_get_usage( true );
 		$return         = false;
 
