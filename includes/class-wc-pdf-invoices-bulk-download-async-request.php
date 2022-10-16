@@ -134,17 +134,23 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 				'batch_size' => apply_filters( 'wc_pdf_invoices_bulk_download_batch_size', 10 ),
 			);
 
+			// Get current user ID.
 			$this->user_id = get_current_user_id();
 
-			if ( ! empty( get_transient( 'wc_pdf_invoices_bulk_download_processing_' . $this->user_id ) ) ) {
+			// If position is 0, which means it's the first ajax request then
+			// we have to delete the transeint data.
+			if ( 0 >= $params['position'] ) {
 				delete_transient( 'wc_pdf_invoices_bulk_download_request_data_' . $this->user_id );
+				delete_transient( 'wc_pdf_invoices_bulk_download_files_' . $this->user_id );
 			}
 
-			// Prepare order ids for the request and save on transient.
+			// Prepare order ids for the request.
 			$ids = $this->prepare_data();
 
+			// Run the process.
 			$results = $this->run( $params );
 
+			// Send the json success response.
 			wp_send_json_success(
 				array(
 					'position'     => $results['position'],
@@ -153,6 +159,7 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 				)
 			);
 		} catch ( Exception $e ) {
+			// Send the json error response.
 			wp_send_json_error(
 				array(
 					'error' => $e->getMessage(),
@@ -169,8 +176,6 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 	 */
 	private function prepare_data() {
 		check_ajax_referer( 'wc-pdf-invoices-bulk-download-request', 'security' );
-
-		set_transient( 'wc_pdf_invoices_bulk_download_processing_' . $this->user_id, 1, HOUR_IN_SECONDS );
 
 		$transient_name = 'wc_pdf_invoices_bulk_download_request_data_' . $this->user_id;
 		$order_ids      = get_transient( $transient_name );
@@ -216,13 +221,15 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 
 			$order_ids = wc_get_orders( $args );
 
+			// If order ids are empty then throw an error.
 			if ( empty( $order_ids ) ) {
-				throw new Exception( sprintf( /* translators: 1: start date 2: end date */ esc_html__( 'Orders from %1$s to %2$s not found.', 'wc-pdf-invoices-bulk-download' ), $date_after, $date_before ) );
+				throw new Exception( sprintf( /* translators: 1: Start Date 2: End Date */ esc_html__( 'Orders from date range %1$s to %2$s not found.', 'wc-pdf-invoices-bulk-download' ), $date_after, $date_before ) );
 			}
 
 			set_transient( $transient_name, $order_ids, HOUR_IN_SECONDS );
 		}
 
+		// Set the limit and data for process.
 		$this->limit = count( $order_ids );
 		$this->data  = $order_ids;
 	}
@@ -236,7 +243,7 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 	 *
 	 * @return array
 	 */
-	private function get_parsed_data( $offset = 0, $limit = 50 ) {
+	private function get_parsed_data( $offset = 0, $limit = 10 ) {
 		if ( ! empty( $this->data ) ) {
 			return array_slice( $this->data, $offset, $limit );
 		}
@@ -252,6 +259,7 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 	 * @throws Exception Throws errors when occurred.
 	 */
 	private function generate_pdf( $order_id ) {
+		// Generate PDF with available plugin.
 		if ( class_exists( 'BEWPI_Invoice' ) ) {
 			$this->wc_pdf_invoices_plugin( $order_id );
 			return;
@@ -260,6 +268,7 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 			return;
 		}
 
+		// Throw error if Invoice plugin is not available.
 		throw new Exception( __( 'Invoices for WooCommerce or WooCommerce PDF Invoices & Packing Slips plugin is required to generate the invoices.', 'wc-pdf-invoices-bulk-download' ) );
 	}
 
@@ -283,6 +292,7 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 			$files_to_zip[] = $invoice_path;
 		}
 
+		// Update files that will be zipped at the end.
 		set_transient( $transient_name, $files_to_zip, HOUR_IN_SECONDS );
 	}
 
@@ -306,6 +316,7 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 			}
 		}
 
+		// Update files that will be zipped at the end.
 		set_transient( $transient_name, $files_to_zip, HOUR_IN_SECONDS );
 	}
 
@@ -347,13 +358,25 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 			}
 		}
 
-		$position              = $index + $position;
-		$percentage            = ( $position * 100 ) / $this->limit;
+		// Add the processed index in position that will be sent back as result.
+		$position = $index + $position;
+
+		// Calculate process complete percentage from the new position and limit.
+		$percentage = ( $position * 100 ) / $this->limit;
+
+		// Set results data.
 		$results['position']   = $position;
 		$results['percentage'] = absint( $percentage ) >= 100 ? 100 : number_format( $percentage, 2 );
 
 		if ( 100 <= $results['percentage'] ) {
+			// If percentange is 100 or more then it means process is done
+			// and we need to create zip and send the download url
+			// in the response.
+
+			// Get the unique archive name.
 			$archive_name = $this->get_archive_name();
+
+			// Generate zip and add download url in response results.
 			if ( class_exists( 'BEWPI_Invoice' ) ) {
 				$results['download_url'] = $this->create_zip(
 					$archive_name,
@@ -374,7 +397,6 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 					}
 				);
 			}
-			delete_transient( 'wc_pdf_invoices_bulk_download_processing_' . $this->user_id );
 		}
 
 		return $results;

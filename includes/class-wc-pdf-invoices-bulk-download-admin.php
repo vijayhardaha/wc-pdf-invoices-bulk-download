@@ -163,7 +163,6 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 
 		$user_id = get_current_user_id();
 
-		delete_transient( 'wc_pdf_invoices_bulk_download_processing_' . $user_id );
 		delete_transient( 'wc_pdf_invoices_bulk_download_request_data_' . $user_id );
 		delete_transient( 'wc_pdf_invoices_bulk_download_files_' . $user_id );
 		?>
@@ -299,6 +298,7 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 	 * and actions so that plugin's functions can be used
 	 * within this plugin.
 	 *
+	 * @since 2.0.0
 	 * @return bool
 	 */
 	private function can_process() {
