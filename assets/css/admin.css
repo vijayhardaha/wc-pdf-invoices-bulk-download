@@ -1897,41 +1897,6 @@ body .ui-tooltip {
 .wc-pdf-invoices-bulk-download-container .notice-box svg {
   fill: currentcolor
 }
-.wc-pdf-invoices-bulk-download-container .side-panel-wrapper {
-  position: fixed;
-  z-index: 1003;
-  top: 126px;
-  right: 0;
-  box-sizing: border-box;
-  width: 100%;
-  height: calc(100vh - 126px);
-  overflow-x: hidden;
-  overflow-y: auto;
-  background: rgba(0,0,0,.5)
-}
-.wc-pdf-invoices-bulk-download-container .side-panel-wrapper .side-panel-content {
-  width: 783px;
-  max-width: 100%;
-  min-height: 100%;
-  margin-left: auto;
-  transform: translateX(100%);
-  transition: transform .2s ease;
-  background: #f3f4f5
-}
-.wc-pdf-invoices-bulk-download-container .side-panel-wrapper.open .side-panel-content {
-  transform: none;
-  box-shadow: 0 0 0 0 rgba(0,0,0,.1)
-}
-.wc-pdf-invoices-bulk-download-container .side-panel-wrapper .side-panel-section {
-  padding: 20px
-}
-.wc-pdf-invoices-bulk-download-container .side-panel-wrapper .side-panel-section table {
-  border-color: #eee
-}
-.wc-pdf-invoices-bulk-download-container .side-panel-wrapper .side-panel-section table thead th {
-  border-color: #eee;
-  font-weight: 700
-}
 @keyframes backInRight {
   0% {
     transform: translateX(2000px) scale(.7);
@@ -1944,12 +1909,6 @@ body .ui-tooltip {
   100% {
     transform: scale(1);
     opacity: 1
-  }
-}
-@media (min-width:783px) {
-  .wc-pdf-invoices-bulk-download-container .side-panel-wrapper {
-    top: 112px;
-    height: calc(100vh - 112px)
   }
 }
 @media (max-width:959px) {

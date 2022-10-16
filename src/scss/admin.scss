@@ -383,58 +383,6 @@ $progress-active-color: color.adjust($progress-bullet-color, $lightness: -20%);
 			fill: currentcolor;
 		}
 	}
-
-	.side-panel-wrapper {
-		position: fixed;
-		z-index: 1003;
-		top: 126px;
-		right: 0;
-		box-sizing: border-box;
-		width: 100%;
-		height: calc(100vh - 126px);
-		overflow-x: hidden;
-		overflow-y: auto;
-		background: rgba($black, 0.5);
-
-		@media (min-width: 783px) {
-			top: 112px;
-			height: calc(100vh - 112px);
-		}
-
-		.side-panel-content {
-			width: 783px;
-			max-width: 100%;
-			min-height: 100%;
-			margin-left: auto;
-			transform: translateX(100%);
-			transition: transform 0.2s ease;
-			background: #f3f4f5;
-		}
-
-		&.open {
-
-			.side-panel-content {
-				transform: none;
-				box-shadow: 0 0 0 0 rgba($black, 0.1);
-			}
-		}
-
-		.side-panel-section {
-			padding: 20px;
-
-			table {
-				border-color: #eee;
-
-				thead {
-
-					th {
-						border-color: #eee;
-						font-weight: 700;
-					}
-				}
-			}
-		}
-	}
 }
 
 @keyframes backInRight {
