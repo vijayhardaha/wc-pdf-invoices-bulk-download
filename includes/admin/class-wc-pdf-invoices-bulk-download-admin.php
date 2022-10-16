@@ -129,7 +129,7 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 					'success'       => __( 'Archive successfully created.', 'wc-pdf-invoices-bulk-download' ),
 				),
 			);
-			wp_localize_script( 'wc-pdf-invoices-bulk-download-admin', 'wc_pdf_invoices_bulk_download_admin_params', $params );
+			wp_localize_script( 'wc-pdf-invoices-bulk-download-admin', 'wc_pdf_invoices_bulk_download_params', $params );
 		}
 	}
 

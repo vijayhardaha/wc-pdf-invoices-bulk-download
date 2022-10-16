@@ -1,7 +1,9 @@
-/* global wc_pdf_invoices_bulk_download_admin_params */
+/* global wc_pdf_invoices_bulk_download_params */
 ( function( $ ) {
 	const APP = {
 		init: () => {
+			APP.params = wc_pdf_invoices_bulk_download_params;
+
 			APP.dismissIcon = `<span role="button" tabindex="0" class="dismiss"><svg height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></g></svg></span>`;
 			APP.noticeIcon = `<span class="notice-icon"><svg height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path></g></svg></span>`;
 			APP.checkIcon = `<span class="notice-icon"><svg height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M9 19.414l-6.707-6.707 1.414-1.414L9 16.586 20.293 5.293l1.414 1.414"></path></g></svg></span>`;
@@ -9,6 +11,7 @@
 			APP.noticeTimeout = false;
 			APP.position = 0;
 			APP.processing = false;
+
 			// Register sales report events.
 			APP.registerDownloadPDFEvents();
 		},
@@ -100,7 +103,7 @@
 					APP.position = 0;
 
 					form.find( '.btn' ).attr( 'disabled', true );
-					APP.showNotice( 'info', wc_pdf_invoices_bulk_download_admin_params.messages.processing, 'no' );
+					APP.showNotice( 'info', APP.params.messages.processing, 'no' );
 
 					$( 'html,body' ).animate( {
 						scrollTop: 0,
@@ -128,7 +131,7 @@
 		runAjax: () => {
 			$.ajax( {
 				type: 'POST',
-				url: wc_pdf_invoices_bulk_download_admin_params.ajaxurl,
+				url: APP.params.ajaxurl,
 				data: APP.data + '&position=' + APP.position,
 				dataType: 'json',
 				success( response ) {
@@ -138,7 +141,7 @@
 							if ( response.data.percentage >= 100 ) {
 								APP.processing = false;
 								APP.form.find( '.btn' ).attr( 'disabled', false );
-								APP.showNotice( 'success', wc_pdf_invoices_bulk_download_admin_params.messages.success );
+								APP.showNotice( 'success', APP.params.messages.success );
 								window.location.href = response.data.download_url;
 							} else {
 								setTimeout( () => APP.runAjax(), 1000 );
@@ -147,7 +150,7 @@
 					} else {
 						APP.processing = false;
 						APP.form.find( '.btn' ).attr( 'disabled', false );
-						let error = wc_pdf_invoices_bulk_download_admin_params.messages.general_error;
+						let error = APP.params.messages.general_error;
 						if ( response.data ) {
 							error = response.data.error;
 						}
@@ -157,7 +160,7 @@
 				error( response, statusText, errorText ) {
 					APP.form.find( '.btn' ).attr( 'disabled', false );
 					APP.processing = false;
-					let error = wc_pdf_invoices_bulk_download_admin_params.messages.server_error;
+					let error = APP.params.messages.server_error;
 					if ( errorText ) {
 						error = errorText + '. ' + error;
 					}
