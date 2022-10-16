@@ -217,8 +217,8 @@ final class WC_PDF_Invoices_Bulk_Download {
 	public function includes() {
 		if ( $this->is_request( 'admin' ) || $this->is_request( 'ajax' ) ) {
 			require WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH . 'vendor/autoload.php';
-			include_once WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH . 'includes/admin/class-wc-pdf-invoices-bulk-download-admin.php';
-			include_once WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH . 'includes/admin/class-wc-pdf-invoices-bulk-download-async-request.php';
+			include_once WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH . 'includes/class-wc-pdf-invoices-bulk-download-admin.php';
+			include_once WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH . 'includes/class-wc-pdf-invoices-bulk-download-async-request.php';
 		}
 	}
 
