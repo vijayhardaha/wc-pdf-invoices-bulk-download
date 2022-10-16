@@ -280,6 +280,15 @@ $progress-active-color: color.adjust($progress-bullet-color, $lightness: -20%);
 		margin-right: 30px;
 	}
 
+	.processing-status {
+		display: none;
+		margin-bottom: 0;
+
+		.spinner {
+			margin: 0;
+		}
+	}
+
 	.notices-container {
 		position: fixed;
 		z-index: 1002;

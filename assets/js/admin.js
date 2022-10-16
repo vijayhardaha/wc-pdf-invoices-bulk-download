@@ -138,9 +138,11 @@
 					if ( response.success ) {
 						if ( false !== response.data ) {
 							APP.position = response.data.position;
+							APP.showPercentage( response.data.percentage );
 							if ( response.data.percentage >= 100 ) {
-								APP.processing = false;
 								APP.form.find( '.btn' ).attr( 'disabled', false );
+								APP.hidePercentage();
+								APP.processing = false;
 								APP.showNotice( 'success', APP.params.messages.success );
 								window.location.href = response.data.download_url;
 							} else {
@@ -148,8 +150,9 @@
 							}
 						}
 					} else {
-						APP.processing = false;
 						APP.form.find( '.btn' ).attr( 'disabled', false );
+						APP.hidePercentage();
+						APP.processing = false;
 						let error = APP.params.messages.general_error;
 						if ( response.data ) {
 							error = response.data.error;
@@ -159,6 +162,7 @@
 				},
 				error( response, statusText, errorText ) {
 					APP.form.find( '.btn' ).attr( 'disabled', false );
+					APP.hidePercentage();
 					APP.processing = false;
 					let error = APP.params.messages.server_error;
 					if ( errorText ) {
@@ -167,6 +171,14 @@
 					APP.showNotice( 'error', error );
 				},
 			} );
+		},
+		showPercentage: ( value ) => {
+			const el = APP.getElement( '.processing-status' );
+			el.find( '.percentage' ).text( value );
+			el.show();
+		},
+		hidePercentage: () => {
+			APP.getElement( '.processing-status' ).hide();
 		},
 	};
 

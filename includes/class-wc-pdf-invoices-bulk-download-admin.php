@@ -261,6 +261,11 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 							</div>
 						</div>
 
+						<p class="processing-status">
+							<span class="spinner is-active"></span>
+							<span><?php esc_html_e( 'Process Status', 'wc-pdf-invoices-bulk-download' ); ?>: <span class="percentage">0</span>%</span>
+						</p>
+
 						<p class="setting-submit">
 							<button class="btn download-invoices" type="submit"><?php esc_html_e( 'Download Invoices', 'wc-pdf-invoices-bulk-download' ); ?></button>
 						</p>

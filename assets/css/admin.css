@@ -1818,6 +1818,13 @@ body .ui-tooltip {
 .wc-pdf-invoices-bulk-download-container .radio-field {
   margin-right: 30px
 }
+.wc-pdf-invoices-bulk-download-container .processing-status {
+  display: none;
+  margin-bottom: 0
+}
+.wc-pdf-invoices-bulk-download-container .processing-status .spinner {
+  margin: 0
+}
 .wc-pdf-invoices-bulk-download-container .notices-container {
   position: fixed;
   z-index: 1002;
