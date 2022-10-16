@@ -283,8 +283,8 @@ $progress-active-color: color.adjust($progress-bullet-color, $lightness: -20%);
 	.notices-container {
 		position: fixed;
 		z-index: 1002;
-		top: 120px;
-		right: 30px;
+		top: 47px;
+		right: 15px;
 		bottom: auto;
 		left: auto;
 		max-width: calc(100% - 64px);
@@ -303,7 +303,7 @@ $progress-active-color: color.adjust($progress-bullet-color, $lightness: -20%);
 		animation-duration: 0.2s;
 		border-radius: 3px;
 		background: #414141;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 0 56px rgba(0, 0, 0, 0.15);
+		box-shadow: 0 2px 5px rgba($black, 0.2), 0 0 56px rgba($black, 0.15);
 		color: $white;
 		line-height: 1.5;
 		text-align: left;
@@ -362,7 +362,7 @@ $progress-active-color: color.adjust($progress-bullet-color, $lightness: -20%);
 
 		.dismiss {
 			flex-shrink: 0;
-			padding: 13px 16px 0;
+			padding: 12px 12px 0;
 			overflow: hidden;
 			outline: 0;
 			box-shadow: none;

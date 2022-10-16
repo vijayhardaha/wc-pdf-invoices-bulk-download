@@ -1821,8 +1821,8 @@ body .ui-tooltip {
 .wc-pdf-invoices-bulk-download-container .notices-container {
   position: fixed;
   z-index: 1002;
-  top: 120px;
-  right: 30px;
+  top: 47px;
+  right: 15px;
   bottom: auto;
   left: auto;
   max-width: calc(100% - 64px);
@@ -1880,7 +1880,7 @@ body .ui-tooltip {
 }
 .wc-pdf-invoices-bulk-download-container .notice-box .dismiss {
   flex-shrink: 0;
-  padding: 13px 16px 0;
+  padding: 12px 12px 0;
   overflow: hidden;
   outline: 0;
   box-shadow: none;
