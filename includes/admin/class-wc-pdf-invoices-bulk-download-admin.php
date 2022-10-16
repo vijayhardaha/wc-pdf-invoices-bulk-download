@@ -161,21 +161,27 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 
 		$years = $this->years_options();
 
+		$user_id = get_current_user_id();
+
+		delete_transient( 'wc_pdf_invoices_bulk_download_processing_' . $user_id );
+		delete_transient( 'wc_pdf_invoices_bulk_download_request_data_' . $user_id );
+		delete_transient( 'wc_pdf_invoices_bulk_download_files_' . $user_id );
 		?>
 		<div class="wrap wc-pdf-invoices-bulk-download-container" id="wc-pdf-invoices-bulk-download-container">
 			<div class="wrapper">
-				<div class="page-title">
-					<h3>
-						<span class="dashicons dashicons-pdf"></span>
-						<span class="link-shadow"><?php esc_html_e( 'Invoice Bulk Download', 'wc-pdf-invoices-bulk-download' ); ?></span>
-					</h3>
-				</div>
+				<h1 class="page-title">
+					<span class="dashicons dashicons-pdf"></span>
+					<span class="link-shadow"><?php esc_html_e( 'Invoice Bulk Download', 'wc-pdf-invoices-bulk-download' ); ?></span>
+				</h1>
 
+				<hr class="wp-header-end">
+
+				<?php if ( $this->can_process() ) : ?>
 				<div class="page-content">
 					<h2 class="notice-fix">&nbsp;</h2>
 					<form method="post" action="" class="wc-pdf-invoices-bulk-download-form">
 						<input type="hidden" name="action" value="wc_pdf_invoices_bulk_download_request" />
-						<?php wp_nonce_field( 'wc_pdf_invoices_bulk_download_request', 'nonce' ); ?>
+						<?php wp_nonce_field( 'wc-pdf-invoices-bulk-download-request', 'security' ); ?>
 
 						<div id="setting-row-download-filter" class="setting-row clear">
 							<div class="setting-label">
@@ -262,6 +268,7 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 						</p>
 					</form>
 				</div>
+				<?php endif; ?>
 			</div>
 		</div>
 		<?php
@@ -283,6 +290,19 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 		}
 
 		return $options;
+	}
+
+	/**
+	 * Check if Invoice plugins are installed or active or not?
+	 *
+	 * This plugin requires one of the invoice plugins to be installed
+	 * and actions so that plugin's functions can be used
+	 * within this plugin.
+	 *
+	 * @return bool
+	 */
+	private function can_process() {
+		return class_exists( 'BEWPI_Invoice' ) || function_exists( 'wcpdf_get_document' );
 	}
 }
 

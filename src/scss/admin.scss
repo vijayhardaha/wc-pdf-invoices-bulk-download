@@ -36,26 +36,12 @@ $progress-active-color: color.adjust($progress-bullet-color, $lightness: -20%);
 @import "jqueryui";
 @import "datepicker";
 
-#wpcontent {
-	position: relative;
-	padding-left: 0 !important;
-}
-
-#wc-pdf-invoices-bulk-download-container {
-	margin: 0;
-}
-
 .wc-pdf-invoices-bulk-download-container {
 
 	.dashicons,
 	.dashicons-before::before {
 		/* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
 		font-family: dashicons !important;
-	}
-
-	.link-shadow {
-		padding: 5px 3px;
-		box-shadow: inset 0 -10px 0 $link-shadow-color;
 	}
 
 	.wrapper {
@@ -69,30 +55,18 @@ $progress-active-color: color.adjust($progress-bullet-color, $lightness: -20%);
 	}
 
 	.page-title {
-		position: fixed;
-		z-index: 1001;
-		top: 32px;
-		box-sizing: border-box;
-		width: 100%;
-		min-height: 80px;
+		display: flex;
+		align-items: center;
 		margin: 0;
-		padding: 20px;
-		background: $white;
-		box-shadow: 0 8px 8px 0 rgba($black, 0.1);
+		margin-bottom: 18px;
+		color: $heading-color;
+		font-size: 28px;
+		font-weight: 700;
+		text-transform: uppercase;
 
-		h3 {
-			display: flex;
-			align-items: center;
-			margin: 0;
-			color: $heading-color;
-			font-size: 28px;
-			font-weight: 700;
-			text-transform: uppercase;
-
-			.dashicons {
-				padding: 5px;
-				border: 3px solid $heading-color;
-			}
+		.dashicons {
+			padding: 5px;
+			border: 3px solid $heading-color;
 		}
 
 		.dashicons,
@@ -104,7 +78,6 @@ $progress-active-color: color.adjust($progress-bullet-color, $lightness: -20%);
 	}
 
 	.page-content {
-		padding: 120px 20px 20px 20px;
 
 		*,
 		*::after,

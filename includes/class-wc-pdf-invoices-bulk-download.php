@@ -16,14 +16,6 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 final class WC_PDF_Invoices_Bulk_Download {
 
 	/**
-	 * Single Request
-	 *
-	 * @since 1.0.0
-	 * @var Object.
-	 */
-	protected $process_single;
-
-	/**
 	 * The single instance of the class.
 	 *
 	 * @since 1.0.0
@@ -43,6 +35,7 @@ final class WC_PDF_Invoices_Bulk_Download {
 		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
 		}
+
 		return self::$instance;
 	}
 
@@ -173,6 +166,8 @@ final class WC_PDF_Invoices_Bulk_Download {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
 
+		$plugin_data = get_plugin_data( WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE );
+
 		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH', dirname( WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE ) . '/' );
 		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_BASENAME', plugin_basename( WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE ) );
 		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_VERSION', $plugin_data['Version'] );
@@ -240,7 +235,7 @@ final class WC_PDF_Invoices_Bulk_Download {
 		$this->load_plugin_textdomain();
 
 		if ( $this->is_request( 'admin' ) || $this->is_request( 'ajax' ) ) {
-			$this->process_single = new WC_PDF_Invoices_Bulk_Download_Async_Request();
+			new WC_PDF_Invoices_Bulk_Download_Async_Request();
 		}
 
 		// Init action.

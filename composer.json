@@ -1,9 +1,7 @@
 {
 	"license": "GPLv2+",
 	"require": {
-		"deliciousbrains/wp-background-processing": "^1.0",
-		"grandt/binstring": "^1.0",
-		"php": ">=7.0",
+		"php": ">=7.2",
 		"phpzip/phpzip": "^2.0"
 	},
 	"require-dev": {
