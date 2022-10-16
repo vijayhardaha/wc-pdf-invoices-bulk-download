@@ -177,7 +177,6 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 
 				<?php if ( $this->can_process() ) : ?>
 				<div class="page-content">
-					<h2 class="notice-fix">&nbsp;</h2>
 					<form method="post" action="" class="wc-pdf-invoices-bulk-download-form">
 						<input type="hidden" name="action" value="wc_pdf_invoices_bulk_download_request" />
 						<?php wp_nonce_field( 'wc-pdf-invoices-bulk-download-request', 'security' ); ?>

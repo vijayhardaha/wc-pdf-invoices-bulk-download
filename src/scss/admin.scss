@@ -44,16 +44,6 @@ $progress-active-color: color.adjust($progress-bullet-color, $lightness: -20%);
 		font-family: dashicons !important;
 	}
 
-	.wrapper {
-		padding: 0;
-	}
-
-	.notice-fix {
-		height: 1px;
-		margin: 0;
-		line-height: 1px;
-	}
-
 	.page-title {
 		display: flex;
 		align-items: center;

@@ -1623,14 +1623,6 @@ body .ui-tooltip {
 .wc-pdf-invoices-bulk-download-container .dashicons-before::before {
   font-family: dashicons!important
 }
-.wc-pdf-invoices-bulk-download-container .wrapper {
-  padding: 0
-}
-.wc-pdf-invoices-bulk-download-container .notice-fix {
-  height: 1px;
-  margin: 0;
-  line-height: 1px
-}
 .wc-pdf-invoices-bulk-download-container .page-title {
   display: flex;
   align-items: center;
