@@ -16,6 +16,7 @@
 		"no-unused-expressions": 1,
 		"no-irregular-whitespace": 1,
 		"no-undef": 1,
-		"no-unused-vars": 1
+		"no-unused-vars": 1,
+		"jsdoc/newline-after-description": 0
 	}
 }
