@@ -19,9 +19,11 @@
 
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
-if ( ! defined( 'WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE' ) ) {
-	define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE', __FILE__ );
-}
+define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE', __FILE__ );
+define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH', dirname( WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE ) . '/' );
+define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_BASENAME', plugin_basename( WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE ) );
+define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_VERSION', '2.0.0' );
+define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_NAME', 'WooCommerce PDF Invoices Bulk Download' );
 
 // Include the main WC_PDF_Invoices_Bulk_Download class.
 if ( ! class_exists( 'WC_PDF_Invoices_Bulk_Download', false ) ) {

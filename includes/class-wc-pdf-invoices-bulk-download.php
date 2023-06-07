@@ -45,15 +45,14 @@ final class WC_PDF_Invoices_Bulk_Download {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
+		$this->includes();
+		$this->init_hooks();
+
 		// Check if WooCommerce is active.
 		require_once ABSPATH . '/wp-admin/includes/plugin.php';
 		if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) && ! function_exists( 'WC' ) ) {
 			return;
 		}
-
-		$this->define_constants();
-		$this->includes();
-		$this->init_hooks();
 	}
 
 	/**
@@ -76,66 +75,8 @@ final class WC_PDF_Invoices_Bulk_Download {
 	private function init_hooks() {
 		register_shutdown_function( array( $this, 'log_errors' ) );
 
-		add_action( 'admin_notices', array( $this, 'build_dependencies_notice' ) );
-		add_action( 'admin_notices', array( $this, 'build_plugins_dependencies_notice' ) );
-
 		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ), -1 );
 		add_action( 'init', array( $this, 'init' ), 0 );
-	}
-
-	/**
-	 * Output a admin notice when build dependencies not met.
-	 *
-	 * @since 1.0.0
-	 */
-	public function build_dependencies_notice() {
-		$old_php = version_compare( phpversion(), WC_PDF_INVOICES_BULK_DOWNLOAD_MIN_PHP_VERSION, '<' );
-		$old_wp  = version_compare( get_bloginfo( 'version' ), WC_PDF_INVOICES_BULK_DOWNLOAD_MIN_WP_VERSION, '<' );
-
-		// Both PHP and WordPress up to date version => no notice.
-		if ( ! $old_php && ! $old_wp ) {
-			return;
-		}
-
-		if ( $old_php && $old_wp ) {
-			$msg = sprintf(
-				/* translators: 1: Minimum PHP version 2: Minimum WordPress version */
-				__( 'Update required: WooCommerce PDF Invoices Bulk Download requires PHP version %1$s or higher and WordPress version %2$s or higher to work properly. Please update to required version to have best experience.', 'wc-pdf-invoices-bulk-download' ),
-				WC_PDF_INVOICES_BULK_DOWNLOAD_MIN_PHP_VERSION,
-				WC_PDF_INVOICES_BULK_DOWNLOAD_MIN_WP_VERSION
-			);
-		} elseif ( $old_php ) {
-			$msg = sprintf(
-				/* translators: 1: Minimum PHP version */
-				__( 'Update required: WooCommerce PDF Invoices Bulk Download requires PHP version %1$s or higher to work properly. Please update to required version to have best experience.', 'wc-pdf-invoices-bulk-download' ),
-				WC_PDF_INVOICES_BULK_DOWNLOAD_MIN_PHP_VERSION
-			);
-		} elseif ( $old_wp ) {
-			$msg = sprintf(
-				/* translators: %s: Minimum WordPress version */
-				__( 'Update required: WooCommerce PDF Invoices Bulk Download requires WordPress version %1$s or newer to work properly. Please update to required version to have best experience.', 'wc-pdf-invoices-bulk-download' ),
-				WC_PDF_INVOICES_BULK_DOWNLOAD_MIN_WP_VERSION
-			);
-		}
-
-		echo '<div class="error"><p>' . $msg . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}
-
-	/**
-	 * Output a admin notice when build dependencies not met.
-	 *
-	 * @since 1.0.2
-	 */
-	public function build_plugins_dependencies_notice() {
-		if ( ! ( function_exists( 'wcpdf_get_document' ) || class_exists( 'BEWPI_Invoice' ) ) ) {
-			$msg = sprintf(
-				/* translators: 1: Plugin name 2: Plugin name */
-				__( 'WooCommerce PDF Invoices Bulk Download requires %1$s or %2$s plugin to be installed and active.', 'wc-pdf-invoices-bulk-download' ),
-				'<a href="https://wordpress.org/plugins/woocommerce-pdf-invoices/" target="_blank">Invoices for WooCommerce</a>',
-				'<a href="https://wordpress.org/plugins/woocommerce-pdf-invoices-packing-slips/" target="_blank">WooCommerce PDF Invoices & Packing Slips</a>'
-			);
-			echo '<div class="error"><p>' . $msg . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		}
 	}
 
 	/**
@@ -153,39 +94,6 @@ final class WC_PDF_Invoices_Bulk_Download {
 				error_log( $error_message );
 				// phpcs:enable
 			}
-		}
-	}
-
-	/**
-	 * Define Constants.
-	 *
-	 * @since 1.0.0
-	 */
-	private function define_constants() {
-		if ( ! function_exists( 'get_plugin_data' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
-
-		$plugin_data = get_plugin_data( WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE );
-
-		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH', dirname( WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE ) . '/' );
-		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_BASENAME', plugin_basename( WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_FILE ) );
-		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_VERSION', $plugin_data['Version'] );
-		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_NAME', $plugin_data['Name'] );
-		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_MIN_PHP_VERSION', $plugin_data['RequiresPHP'] );
-		$this->define( 'WC_PDF_INVOICES_BULK_DOWNLOAD_MIN_WP_VERSION', $plugin_data['RequiresWP'] );
-	}
-
-	/**
-	 * Define constant if not already set.
-	 *
-	 * @since 1.0.0
-	 * @param string      $name  Constant name.
-	 * @param string|bool $value Constant value.
-	 */
-	private function define( $name, $value ) {
-		if ( ! defined( $name ) ) {
-			define( $name, $value );
 		}
 	}
 
@@ -215,11 +123,9 @@ final class WC_PDF_Invoices_Bulk_Download {
 	 * @since 1.0.0
 	 */
 	public function includes() {
-		if ( $this->is_request( 'admin' ) || $this->is_request( 'ajax' ) ) {
-			require WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH . 'vendor/autoload.php';
-			include_once WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH . 'includes/class-wc-pdf-invoices-bulk-download-admin.php';
-			include_once WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH . 'includes/class-wc-pdf-invoices-bulk-download-async-request.php';
-		}
+		require WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH . 'vendor/autoload.php';
+		include_once WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH . 'includes/class-wc-pdf-invoices-bulk-download-admin.php';
+		include_once WC_PDF_INVOICES_BULK_DOWNLOAD_ABSPATH . 'includes/class-wc-pdf-invoices-bulk-download-async-request.php';
 	}
 
 	/**
@@ -233,10 +139,6 @@ final class WC_PDF_Invoices_Bulk_Download {
 
 		// Set up localisation.
 		$this->load_plugin_textdomain();
-
-		if ( $this->is_request( 'admin' ) || $this->is_request( 'ajax' ) ) {
-			new WC_PDF_Invoices_Bulk_Download_Async_Request();
-		}
 
 		// Init action.
 		do_action( 'wc_pdf_invoices_bulk_download_init' );

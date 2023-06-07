@@ -484,3 +484,5 @@ class WC_PDF_Invoices_Bulk_Download_Async_Request {
 		return sprintf( 'Invoices-%s.zip', time() );
 	}
 }
+
+new WC_PDF_Invoices_Bulk_Download_Async_Request();
