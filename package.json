@@ -33,14 +33,14 @@
 		"makepot": "wp i18n make-pot . --exclude=\"node_modules,vendor\" --slug=wc-pdf-invoices-bulk-download"
 	},
 	"devDependencies": {
-		"@wordpress/browserslist-config": "^5.2.0",
-		"@wordpress/eslint-plugin": "^13.2.0",
-		"@wordpress/prettier-config": "^2.1.0",
-		"@wordpress/stylelint-config": "^21.1.0",
-		"autoprefixer": "^10.4.12",
+		"@wordpress/browserslist-config": "^5.17.0",
+		"@wordpress/eslint-plugin": "^14.7.0",
+		"@wordpress/prettier-config": "^2.17.0",
+		"@wordpress/stylelint-config": "^21.17.0",
+		"autoprefixer": "^10.4.14",
 		"del": "^7.0.0",
-		"eslint": "^8.24.0",
-		"eslint-plugin-jsdoc": "^39.3.6",
+		"eslint": "^8.42.0",
+		"eslint-plugin-jsdoc": "^46.2.6",
 		"gulp": "^4.0.2",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-clone": "^2.0.1",
@@ -52,11 +52,11 @@
 		"gulp-sass": "^5.1.0",
 		"gulp-terser": "^2.1.0",
 		"merge-stream": "^2.0.0",
-		"postcss": "^8.4.17",
-		"postcss-discard-duplicates": "^5.1.0",
-		"sass": "^1.55.0",
+		"postcss": "^8.4.24",
+		"postcss-discard-duplicates": "^6.0.0",
+		"sass": "^1.62.1",
 		"stylelint": "^14.13.0",
-		"stylelint-config-property-sort-order-smacss": "^9.0.0",
-		"stylelint-order": "^5.0.0"
+		"stylelint-config-property-sort-order-smacss": "^9.1.0",
+		"stylelint-order": "^6.0.3"
 	}
 }
