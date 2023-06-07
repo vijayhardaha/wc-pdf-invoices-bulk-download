@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.0.1 - 07 Jun, 2023
+
+-   Bump packages to latest version.
+-   Rewrite core class code to remove error conflicts.
+
 ## 2.0.0 - 16 Oct, 2022
 
 -   Update development seup & configs.
