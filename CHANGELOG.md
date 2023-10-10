@@ -1,27 +1,29 @@
 # CHANGELOG
 
-## 2.0.1 - 07 Jun, 2023
+## Version 2.0.1 - Jun 07, 2023
 
--   Bump packages to latest version.
--   Rewrite core class code to remove error conflicts.
+- Updated packages to their latest versions.
+- Reworked the core class code to eliminate error conflicts.
 
-## 2.0.0 - 16 Oct, 2022
+## Version 2.0.0 - Oct 16, 2022
 
--   Update development seup & configs.
--   Remove Async request usage and use Ajax repeated request methods.
--   Optimized plugin code & file structure.
--   Enhanced functions, files & code documentation.
--   Add processing spinner.
--   Apply new method to handle WordPress notice messages display position.
+- Revamped development setup and configurations.
+- Replaced asynchronous requests with repeated Ajax methods for improved performance.
+- Streamlined the plugin's code and file structure.
+- Enriched functions, files, and code documentation.
+- Added a processing spinner for user feedback.
+- Implemented a new method for managing the display position of WordPress notice messages.
 
-## 1.0.2 - 19 Nov, 2021
+## Version 1.0.2 - Nov 19, 2021
 
--   Release of version 1.0.2
+- Release of version 1.0.2.
 
-## 1.0.1 - 19 Nov, 2021
+## Version 1.0.1 - Nov 19, 2021
 
--   Release of version 1.0.2
+- Release of version 1.0.1.
 
-## 1.0.0 - 19 Nov, 2021
+## Version 1.0.0 - Nov 19, 2021
 
--   Release of version 1.0.0
+- Release of version 1.0.0.
+
+This version of the changelog maintains a clean and simplified format without additional headings.
