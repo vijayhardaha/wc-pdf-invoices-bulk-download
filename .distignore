@@ -23,3 +23,5 @@ phpunit.*
 phpunit.xml.dist
 pnpm-lock.yaml
 README.md
+readme.txt
+setup.mjs
