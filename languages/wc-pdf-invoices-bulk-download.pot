@@ -1,115 +1,124 @@
-# Copyright (C) 2023 Vijay Hardaha
+# Copyright (C) 2024 Vijay Hardaha
 # This file is distributed under the GPLv2+.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce PDF Invoices Bulk Download 2.0.1\n"
+"Project-Id-Version: WooCommerce PDF Invoices Bulk Download 2.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-pdf-invoices-bulk-download\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-06-07T11:35:37+00:00\n"
+"POT-Creation-Date: 2024-03-09T08:11:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: wc-pdf-invoices-bulk-download\n"
 
 #. Plugin Name of the plugin
+#: wc-pdf-invoices-bulk-download.php
 msgid "WooCommerce PDF Invoices Bulk Download"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: wc-pdf-invoices-bulk-download.php
 msgid "https://github.com/vijayhardaha/wc-pdf-invoices-bulk-download"
 msgstr ""
 
 #. Description of the plugin
+#: wc-pdf-invoices-bulk-download.php
 msgid "WooCommerce PDF Invoices Bulk Download plugin allows you to download WooCommerce PDF invoices in bulk as zip files. You can filter and group invoices by date range, months order status and much more."
 msgstr ""
 
 #. Author of the plugin
+#: wc-pdf-invoices-bulk-download.php
 msgid "Vijay Hardaha"
 msgstr ""
 
 #. Author URI of the plugin
+#: wc-pdf-invoices-bulk-download.php
 msgid "https://twitter.com/vijayhardaha"
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:43
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:173
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:47
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:193
 msgid "Invoice Bulk Download"
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:126
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:61
+msgid "View Options"
+msgstr ""
+
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:146
 msgid "Sorry, something is wrong. Please, try later."
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:127
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:147
 msgid "Please, increase your System Status Limits (PHP Time Limit, PHP Memory Limit, PHP Max Input Vars) or contact with your hosting."
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:128
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:148
 msgid "Archive is preparing, Please wait..."
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:129
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:149
 msgid "Archive successfully created."
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:143
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:202
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:163
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:222
 msgid "Month & Year"
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:144
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:231
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:164
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:251
 msgid "Custom Date Range"
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:186
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:206
 msgid "Download Filter"
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:196
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:216
 msgid "Choose the report orders period."
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:206
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:226
 msgid "Order Month"
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:216
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:236
 msgid "Order Year"
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:225
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:245
 msgid "Choose the month & year for orders period."
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:235
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:255
 msgid "Start Date"
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:239
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:259
 msgid "End Date"
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:242
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:262
 msgid "Choose the custom date range for orders period."
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:248
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:268
 msgid "Order Status"
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:260
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:280
 msgid "Choose the order statuses to be included."
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:266
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:286
 msgid "Process Status"
 msgstr ""
 
-#: includes/class-wc-pdf-invoices-bulk-download-admin.php:270
+#: includes/class-wc-pdf-invoices-bulk-download-admin.php:290
 msgid "Download Invoices"
 msgstr ""
 

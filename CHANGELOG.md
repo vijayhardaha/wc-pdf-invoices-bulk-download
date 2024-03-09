@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## Version 2.0.2 - Mar 09, 2024
+
+- Add view options link in plugin actions.
+- Bump dependencies to the latest versions.
+- Enhance scripts definations.
+- Write license name in valid SPDX expression.
+- Enhance vscode settings.
+
 ## Version 2.0.1 - Jun 07, 2023
 
 - Updated packages to their latest versions.
