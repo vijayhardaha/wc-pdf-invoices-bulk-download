@@ -29,9 +29,13 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 		// Add menus.
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 
+		// Add plugin action link.
+		add_filter( 'plugin_action_links_' . WC_PDF_INVOICES_BULK_DOWNLOAD_PLUGIN_BASENAME, array( $this, 'plugin_manage_link' ), 10, 4 );
+
 		// Enqueue scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
+
 	}
 
 	/**
@@ -41,6 +45,22 @@ class WC_PDF_Invoices_Bulk_Download_Admin {
 	 */
 	public function admin_menu() {
 		add_submenu_page( 'woocommerce', __( 'Invoice Bulk Download', 'wc-pdf-invoices-bulk-download' ), __( 'Invoice Bulk Download', 'wc-pdf-invoices-bulk-download' ), 'manage_woocommerce', 'wc-invoice-bulk-download', array( $this, 'admin_menu_page' ) );
+	}
+
+
+	/**
+	 * Return the plugin action links.
+	 *
+	 * @since 2.0.2
+	 * @param array $actions An array of actions.
+	 * @return array
+	 */
+	public function plugin_manage_link( $actions ) {
+		$url = add_query_arg( array( 'page' => 'wc-invoice-bulk-download' ), admin_url( 'admin.php' ) );
+
+		array_unshift( $actions, '<a href="' . esc_url( $url ) . '">' . esc_html__( 'View Options', 'wc-pdf-invoices-bulk-download' ) . '</a>' );
+
+		return $actions;
 	}
 
 	/**
